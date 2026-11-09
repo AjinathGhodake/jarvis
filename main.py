@@ -166,7 +166,7 @@ _TAIL_MARGIN = 0.25
 # seconds is twenty-five times the measured first response, which leaves room
 # for a slow tool call (those send their own traffic, which clears the deadline)
 # while turning an unbounded hang into a blip.
-_STALL_LIMIT = 30.0
+_STALL_LIMIT = 120.0  # local MLX cold turns take ~40 s; 30 s killed them in a loop
 
 _VIS_WIN = 1024        # ~43 ms analysis window at 24 kHz: enough for formants
 _VIS_HOP = 480         # 20 ms between frames, i.e. 50 shapes a second

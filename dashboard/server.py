@@ -1217,7 +1217,7 @@ class DashboardServer:
                 f"https://{self._ip}:{SECURE_PORT}/{path}{query}",
                 status_code=307)
 
-        cfg = uvicorn.Config(bounce, host="0.0.0.0", port=PORT,
+        cfg = uvicorn.Config(bounce, host="127.0.0.1", port=PORT,
                              log_level="warning")
         print(f"[Dashboard] Type by hand:  {self._ip}:{PORT}  "
               f"(sends you to the secure page)")
@@ -1273,7 +1273,7 @@ class DashboardServer:
                   'certificate once).')
 
         cfg = uvicorn.Config(
-            self.app, host="0.0.0.0",
+            self.app, host="127.0.0.1",
             port=SECURE_PORT if use_ssl else PORT, log_level="warning",
             **({"ssl_keyfile": str(ssl_key), "ssl_certfile": str(ssl_cert)}
                if use_ssl else {}),
@@ -1295,7 +1295,7 @@ class DashboardServer:
         # being tested for, so setting it made the probe always succeed.
         _probe = _socket.socket()
         try:
-            _probe.bind(("0.0.0.0", SECURE_PORT if use_ssl else PORT))
+            _probe.bind(("127.0.0.1", SECURE_PORT if use_ssl else PORT))
         except OSError as exc:
             _probe.close()
             self._bind_error = (

@@ -7162,7 +7162,9 @@ class MainWindow(QMainWindow):
         if not API_FILE.exists(): return False
         try:
             d = json.loads(API_FILE.read_text(encoding="utf-8"))
-            return bool(d.get("gemini_api_key")) and bool(d.get("os_system"))
+            # A local-only setup (providers configured) needs no Gemini key.
+            return bool(d.get("os_system")) and (
+                bool(d.get("gemini_api_key")) or bool(d.get("providers")))
         except Exception:
             return False
 
