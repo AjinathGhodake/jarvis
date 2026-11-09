@@ -89,6 +89,11 @@ CORE_TOOLS: tuple[str, ...] = (
     "screen_process",
     "save_memory",
     "recall_memory",
+    # Local plugin: read-only Life OS vault. Listed here (and this early)
+    # because main.py strips a declaration's own "tier" key before the local
+    # engine budgets tools, and the char budget stops at the first core tool
+    # that does not fit.
+    "life_os",
     "undo",
     "reminder",
     "video_player",
