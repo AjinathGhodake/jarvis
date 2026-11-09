@@ -14,6 +14,7 @@ PyQt6>=6.6,<7
 sounddevice>=0.4,<1
 numpy>=1.24,<3
 google-genai>=2.8.0,<3
+anthropic>=2.6,<3
 # Declared even though google-genai already installs it. providers/ imports it
 # directly, and a package you import is a package you depend on — relying on
 # somebody else's transitive dependency works right up until they drop it.

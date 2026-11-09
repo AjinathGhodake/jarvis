@@ -33,7 +33,7 @@ from .base import Field, caps_of, validate
 # see the module docstring. A name here that does not import is reported and
 # skipped, never raised.
 _MODULES: dict[str, tuple[str, ...]] = {
-    "llm": ("llm_openai",),
+    "llm": ("llm_openai", "llm_anthropic"),
     "stt": ("stt_whisper",),
     "tts": ("tts_piper", "tts_system", "tts_elevenlabs"),
     "engine": ("engine_pipeline",),
